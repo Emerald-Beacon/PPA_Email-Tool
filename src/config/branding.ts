@@ -9,7 +9,7 @@ export const BRANDING = {
   cardColor: '#fbf8f1',
   logoPrimaryPath: '/assets/logos/ppa-logo-primary.png',
   logoMarkPath: '/assets/logos/ppa-logo-mark.png',
-  websiteUrl: 'https://www.princeperelson.com',
+  websiteUrl: 'https://perelson.com',
   emailFontStack: "'Montserrat', Arial, Helvetica, sans-serif",
   appFontFamily: "'Montserrat', Arial, Helvetica, sans-serif",
 } as const;

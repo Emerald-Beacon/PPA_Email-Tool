@@ -111,7 +111,7 @@ export function EmailForm({
               value={formData.ctaUrl}
               onChange={(event) => onFieldChange('ctaUrl', event.target.value)}
               type="url"
-              placeholder="https://www.princeperelson.com"
+              placeholder="https://perelson.com"
             />
           </Field>
         </div>

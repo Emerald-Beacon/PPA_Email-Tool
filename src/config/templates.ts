@@ -53,7 +53,7 @@ export const DEFAULT_EMAILS: Record<EmailTemplateId, EmailFormData> = {
     bodyCopy:
       "Hi there,\n\nI wanted to reach out because I’m working on a search for a client that is looking for someone with your background. The role offers strong visibility, a collaborative team, and meaningful room to grow.\n\nIf you'd be open to a brief conversation, I’d be happy to share more details and learn what you’re considering next.",
     ctaText: 'Schedule a quick call',
-    ctaUrl: 'https://www.princeperelson.com',
+    ctaUrl: 'https://perelson.com',
     recruiter,
     footerText:
       'PrincePerelson & Associates is a Utah-based recruiting and staffing firm connecting exceptional talent with leading organizations.',
@@ -69,7 +69,7 @@ export const DEFAULT_EMAILS: Record<EmailTemplateId, EmailFormData> = {
     bodyCopy:
       "Hello,\n\nI wanted to introduce a candidate who brings a rare combination of leadership, technical capability, and strong communication skills. Based on what we know about your team, I believe this person could make an immediate impact.\n\nIf you'd like, I can send a resume and share more context around motivation, compensation, and availability.",
     ctaText: 'Request candidate details',
-    ctaUrl: 'https://www.princeperelson.com',
+    ctaUrl: 'https://perelson.com',
     recruiter,
     footerText:
       'PrincePerelson partners with employers across Utah and beyond to help teams hire with confidence.',
@@ -85,7 +85,7 @@ export const DEFAULT_EMAILS: Record<EmailTemplateId, EmailFormData> = {
     bodyCopy:
       "Hello,\n\nWe’d love to have you join us for an upcoming PrincePerelson event. It’s a great opportunity to connect with peers, exchange market insights, and strengthen relationships across our professional community.\n\nWe hope you can join us and would be glad to answer any questions before the event.",
     ctaText: 'Reserve your spot',
-    ctaUrl: 'https://www.princeperelson.com',
+    ctaUrl: 'https://perelson.com',
     recruiter,
     footerText:
       'Thank you for being part of the PrincePerelson network. We value long-term relationships and meaningful connections.',
@@ -101,7 +101,7 @@ export const DEFAULT_EMAILS: Record<EmailTemplateId, EmailFormData> = {
     bodyCopy:
       "Hello,\n\nI wanted to reach out with a quick update and to stay in touch. We continue to see movement across the market, and I’d be glad to be a resource if you’re hiring, exploring your next move, or simply want a fresh perspective.\n\nIf a conversation would be helpful, I’m always happy to connect.",
     ctaText: 'Connect with me',
-    ctaUrl: 'https://www.princeperelson.com',
+    ctaUrl: 'https://perelson.com',
     recruiter,
     footerText:
       'PrincePerelson & Associates helps employers and professionals move forward with confidence through thoughtful recruiting partnerships.',
