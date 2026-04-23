@@ -17,6 +17,10 @@ export function ActionBar({
 }: ActionBarProps) {
   return (
     <div className="action-bar panel">
+      <div className="action-bar-copy">
+        <h2>Export</h2>
+        <p>Use the rich copy option first for Outlook, then fall back to raw HTML if needed.</p>
+      </div>
       <div className="action-grid">
         <button type="button" className="btn btn-primary" onClick={onCopyHtml}>
           Copy HTML

@@ -20,32 +20,33 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
   const heroImageBlock = formData.heroImage
     ? `
       <tr>
-        <td style="padding:0;">
+        <td style="padding:0 36px 0 36px;">
           <img
             src="${escapeAttribute(formData.heroImage.dataUrl)}"
             alt="${escapeAttribute(formData.heroImage.alt || formData.headline)}"
-            width="${EMAIL_MAX_WIDTH}"
-            style="display:block; width:100%; max-width:${EMAIL_MAX_WIDTH}px; height:auto; border:0;"
+            width="${EMAIL_MAX_WIDTH - 72}"
+            style="display:block; width:100%; max-width:${EMAIL_MAX_WIDTH - 72}px; height:auto; border:0; border-radius:18px;"
           />
         </td>
       </tr>
+      <tr><td style="height:26px; line-height:26px; font-size:0;">&nbsp;</td></tr>
     `
     : '';
 
   const headshotBlock = formData.headshotImage
     ? `
-      <td width="88" valign="top" style="padding:0 18px 0 0;">
+      <td width="84" valign="top" style="padding:0 18px 0 0;">
         <img
           src="${escapeAttribute(formData.headshotImage.dataUrl)}"
           alt="${escapeAttribute(formData.headshotImage.alt || formData.recruiter.name)}"
-          width="88"
-          style="display:block; width:88px; height:88px; border-radius:44px; object-fit:cover;"
+          width="84"
+          style="display:block; width:84px; height:84px; border-radius:42px; object-fit:cover; border:2px solid #d9d1c3;"
         />
       </td>
     `
     : '';
 
-  const signatureTextWidth = formData.headshotImage ? '454' : '560';
+  const signatureTextWidth = formData.headshotImage ? '430' : '532';
 
   return `
 <!doctype html>
@@ -57,103 +58,130 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>${escapeHtml(formData.subjectLine)}</title>
   </head>
-  <body style="margin:0; padding:0; background-color:#eef2f4;">
+  <body style="margin:0; padding:0; background-color:#ede9e0;">
     <div style="display:none; max-height:0; overflow:hidden; opacity:0; mso-hide:all;">
       ${escapeHtml(formData.preheader)}
     </div>
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#eef2f4; margin:0; padding:0; width:100%;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%; margin:0; padding:0; background-color:#ede9e0;">
       <tr>
-        <td align="center" style="padding:24px 12px;">
-          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="${EMAIL_MAX_WIDTH}" style="width:100%; max-width:${EMAIL_MAX_WIDTH}px; background-color:#ffffff;">
+        <td align="center" style="padding:28px 12px 40px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="${EMAIL_MAX_WIDTH}" style="width:100%; max-width:${EMAIL_MAX_WIDTH}px;">
             <tr>
-              <td style="padding:20px 28px; background-color:#ffffff; border-bottom:4px solid ${template.accentColor};">
+              <td style="padding:18px 0 20px;">
                 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                   <tr>
-                    <td valign="middle" align="left">
+                    <td align="center">
                       <img
                         src="${logoSrc}"
                         alt="${BRANDING.companyName}"
-                        width="212"
-                        style="display:block; width:212px; max-width:100%; height:auto; border:0;"
+                        width="320"
+                        style="display:block; width:320px; max-width:100%; height:auto; border:0;"
                       />
                     </td>
                   </tr>
                 </table>
               </td>
             </tr>
-            ${heroImageBlock}
             <tr>
-              <td style="padding:28px 28px 18px 28px;">
+              <td style="background-color:#fbf8f1; border:1px solid #d8cfbe; border-radius:28px;">
                 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                   <tr>
-                    <td style="font-family:${BRANDING.emailFontStack}; font-size:12px; line-height:18px; letter-spacing:1.2px; text-transform:uppercase; color:${template.accentColor}; font-weight:700; padding-bottom:12px;">
-                      ${escapeHtml(template.eyebrow)}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="font-family:${BRANDING.emailFontStack}; font-size:31px; line-height:38px; color:#14212b; font-weight:700; padding-bottom:10px;">
-                      ${escapeHtml(formData.headline)}
-                    </td>
-                  </tr>
-                  ${
-                    formData.subheadline.trim()
-                      ? `
-                    <tr>
-                      <td style="font-family:${BRANDING.emailFontStack}; font-size:18px; line-height:28px; color:#4b5963; font-weight:500; padding-bottom:18px;">
-                        ${escapeHtml(formData.subheadline)}
-                      </td>
-                    </tr>
-                  `
-                      : ''
-                  }
-                  ${bodyParagraphs
-                    .map(
-                      (paragraph) => `
-                    <tr>
-                      <td style="font-family:${BRANDING.emailFontStack}; font-size:16px; line-height:27px; color:#24323c; padding-bottom:16px;">
-                        ${paragraph}
-                      </td>
-                    </tr>
-                  `,
-                    )
-                    .join('')}
-                  <tr>
-                    <td style="padding:8px 0 20px 0;">
-                      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                    <td style="padding:30px 36px 18px 36px;">
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
-                          <td align="center" bgcolor="${template.accentColor}" style="border-radius:4px;">
-                            <a
-                              href="${escapeAttribute(formData.ctaUrl)}"
-                              style="display:inline-block; font-family:${BRANDING.emailFontStack}; font-size:15px; line-height:15px; color:#ffffff; text-decoration:none; padding:15px 22px; font-weight:700;"
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              ${escapeHtml(formData.ctaText)}
-                            </a>
+                          <td align="center" style="font-family:${BRANDING.emailFontStack}; font-size:12px; line-height:18px; letter-spacing:2.4px; text-transform:uppercase; color:${template.accentColor}; font-weight:700;">
+                            ${escapeHtml(template.eyebrow)}
+                          </td>
+                        </tr>
+                        <tr><td style="height:18px; line-height:18px; font-size:0;">&nbsp;</td></tr>
+                        <tr>
+                          <td align="center" style="font-family:Georgia, 'Times New Roman', serif; font-size:38px; line-height:45px; color:#1b2d4b; font-weight:400;">
+                            ${escapeHtml(formData.headline)}
+                          </td>
+                        </tr>
+                        ${
+                          formData.subheadline.trim()
+                            ? `
+                        <tr><td style="height:16px; line-height:16px; font-size:0;">&nbsp;</td></tr>
+                        <tr>
+                          <td align="center" style="font-family:${BRANDING.emailFontStack}; font-size:17px; line-height:29px; color:#655f58; font-weight:500;">
+                            ${escapeHtml(formData.subheadline)}
+                          </td>
+                        </tr>
+                        `
+                            : ''
+                        }
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:0 36px;">
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                        <tr>
+                          <td style="border-top:1px solid #d8cfbe; font-size:0; line-height:0;">&nbsp;</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr><td style="height:28px; line-height:28px; font-size:0;">&nbsp;</td></tr>
+                  ${heroImageBlock}
+                  <tr>
+                    <td style="padding:0 36px 12px 36px;">
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                        ${bodyParagraphs
+                          .map(
+                            (paragraph) => `
+                          <tr>
+                            <td style="font-family:${BRANDING.emailFontStack}; font-size:16px; line-height:29px; color:#2f3b4d; padding-bottom:18px;">
+                              ${paragraph}
+                            </td>
+                          </tr>
+                        `,
+                          )
+                          .join('')}
+                        <tr>
+                          <td style="padding-top:8px; padding-bottom:14px;">
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                              <tr>
+                                <td align="center" bgcolor="${template.accentColor}" style="border-radius:999px;">
+                                  <a
+                                    href="${escapeAttribute(formData.ctaUrl)}"
+                                    style="display:inline-block; font-family:${BRANDING.emailFontStack}; font-size:14px; line-height:14px; color:#fbf8f1; text-decoration:none; padding:16px 24px; font-weight:700; letter-spacing:0.04em;"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                  >
+                                    ${escapeHtml(formData.ctaText)}
+                                  </a>
+                                </td>
+                              </tr>
+                            </table>
                           </td>
                         </tr>
                       </table>
                     </td>
                   </tr>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td style="padding:0 28px 24px 28px;">
-                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-top:1px solid #d8dee4;">
                   <tr>
-                    <td style="padding-top:22px;">
+                    <td style="padding:10px 36px 0;">
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                        <tr>
+                          <td style="border-top:1px solid #d8cfbe; font-size:0; line-height:0;">&nbsp;</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:24px 36px 24px 36px;">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                         <tr>
                           ${headshotBlock}
-                          <td width="${signatureTextWidth}" valign="top" style="font-family:${BRANDING.emailFontStack}; color:#24323c;">
-                            <div style="font-size:18px; line-height:24px; font-weight:700; color:#14212b; padding-bottom:3px;">
+                          <td width="${signatureTextWidth}" valign="top" style="font-family:${BRANDING.emailFontStack}; color:#2f3b4d;">
+                            <div style="font-size:19px; line-height:24px; font-weight:700; color:#1b2d4b; padding-bottom:4px;">
                               ${escapeHtml(formData.recruiter.name)}
                             </div>
-                            <div style="font-size:14px; line-height:22px; color:#4b5963; padding-bottom:10px;">
+                            <div style="font-size:13px; line-height:22px; color:#7b6e61; text-transform:uppercase; letter-spacing:1.6px; padding-bottom:12px;">
                               ${escapeHtml(formData.recruiter.title)}
                             </div>
-                            <div style="font-size:14px; line-height:24px; color:#24323c;">
+                            <div style="font-size:14px; line-height:25px; color:#2f3b4d;">
                               <a href="tel:${escapeAttribute(formData.recruiter.phone)}" style="color:${template.accentColor}; text-decoration:none;">${escapeHtml(formData.recruiter.phone)}</a><br />
                               <a href="mailto:${escapeAttribute(formData.recruiter.email)}" style="color:${template.accentColor}; text-decoration:none;">${escapeHtml(formData.recruiter.email)}</a><br />
                               <a href="${BRANDING.websiteUrl}" style="color:${template.accentColor}; text-decoration:none;" target="_blank" rel="noreferrer">${BRANDING.websiteUrl.replace('https://', '')}</a>
@@ -163,15 +191,15 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
                       </table>
                     </td>
                   </tr>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td style="padding:18px 28px 28px 28px; background-color:#f6f8fa;">
-                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                   <tr>
-                    <td style="font-family:${BRANDING.emailFontStack}; font-size:12px; line-height:19px; color:#5d6b75;">
-                      ${escapeHtml(formData.footerText || BRANDING.companyName)}
+                    <td style="background-color:#1b2d4b; border-radius:0 0 28px 28px; padding:18px 28px 20px 28px;">
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                        <tr>
+                          <td align="center" style="font-family:${BRANDING.emailFontStack}; font-size:12px; line-height:20px; color:#f3ecdf;">
+                            ${escapeHtml(formData.footerText || BRANDING.companyName)}
+                          </td>
+                        </tr>
+                      </table>
                     </td>
                   </tr>
                 </table>
