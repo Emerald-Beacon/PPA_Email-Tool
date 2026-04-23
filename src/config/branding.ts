@@ -8,7 +8,7 @@ export const BRANDING = {
   canvasColor: '#ede9e0',
   cardColor: '#fbf8f1',
   logoPrimaryPath: '/assets/logos/ppa-logo-primary.png',
-  logoMarkPath: '/assets/logos/ppa-logo-mark.svg',
+  logoMarkPath: '/assets/logos/ppa-logo-mark.png',
   websiteUrl: 'https://www.princeperelson.com',
   emailFontStack: "'Montserrat', Arial, Helvetica, sans-serif",
   appFontFamily: "'Montserrat', Arial, Helvetica, sans-serif",

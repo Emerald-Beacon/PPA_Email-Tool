@@ -22,8 +22,8 @@ An internal web app for PrincePerelson & Associates that helps non-technical tea
 │   └── assets/
 │       ├── README.md
 │       └── logos/
-│           ├── ppa-logo-mark-inverse.svg
-│           ├── ppa-logo-mark.svg
+│           ├── ppa-logo-mark-inverse.png
+│           ├── ppa-logo-mark.png
 │           └── ppa-logo-primary.png
 ├── src/
 │   ├── components/
@@ -88,13 +88,13 @@ To swap in approved brand files:
 
 1. Replace these files while keeping the same names:
    - `public/assets/logos/ppa-logo-primary.png`
-   - `public/assets/logos/ppa-logo-mark.svg`
-2. Optional: replace `public/assets/logos/ppa-logo-mark-inverse.svg` if you want a dark-background version for future app or marketing use.
+   - `public/assets/logos/ppa-logo-mark.png`
+2. Optional: replace `public/assets/logos/ppa-logo-mark-inverse.png` if you want a dark-background version for future app or marketing use.
 3. Restart the dev server if it is already running.
 
 If you need to change filenames, update the paths in `src/config/branding.ts`.
 
-The current SVG logos are cleaned recreations based on screenshot references. They are suitable for initial internal use, but official vector source files from PrincePerelson would still be the best long-term replacement.
+The current wordmark and mark assets are sourced from the provided brand files and screenshots. Official vector source files from PrincePerelson would still be the best long-term replacement.
 
 ## Outlook usage notes
 
