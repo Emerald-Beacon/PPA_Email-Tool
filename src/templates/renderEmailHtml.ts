@@ -74,8 +74,8 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
                       <img
                         src="${logoSrc}"
                         alt="${BRANDING.companyName}"
-                        width="320"
-                        style="display:block; width:320px; max-width:100%; height:auto; border:0;"
+                        width="352"
+                        style="display:block; width:352px; max-width:100%; height:auto; border:0;"
                       />
                     </td>
                   </tr>

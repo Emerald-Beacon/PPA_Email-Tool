@@ -24,7 +24,7 @@ An internal web app for PrincePerelson & Associates that helps non-technical tea
 │       └── logos/
 │           ├── ppa-logo-mark-inverse.svg
 │           ├── ppa-logo-mark.svg
-│           └── ppa-logo-primary.svg
+│           └── ppa-logo-primary.png
 ├── src/
 │   ├── components/
 │   ├── config/
@@ -87,7 +87,7 @@ Placeholder logo files are included so the app runs immediately.
 To swap in approved brand files:
 
 1. Replace these files while keeping the same names:
-   - `public/assets/logos/ppa-logo-primary.svg`
+   - `public/assets/logos/ppa-logo-primary.png`
    - `public/assets/logos/ppa-logo-mark.svg`
 2. Optional: replace `public/assets/logos/ppa-logo-mark-inverse.svg` if you want a dark-background version for future app or marketing use.
 3. Restart the dev server if it is already running.
