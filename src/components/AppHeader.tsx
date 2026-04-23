@@ -8,8 +8,8 @@ export function AppHeader() {
           <p className="eyebrow">Internal Recruiting Tool</p>
           <h1>{BRANDING.appTitle}</h1>
           <p className="intro">
-            Create polished PrincePerelson recruiting outreach with a calmer, brand-led layout
-            built for Outlook copy and paste.
+            Help PrincePerelson team members create polished, branded outreach emails for Outlook
+            with a simple workflow and reliable copy-and-paste output.
           </p>
           <div className="intro-chips">
             <span>Outlook-ready HTML</span>
@@ -20,8 +20,8 @@ export function AppHeader() {
         <div className="brand-hero-card">
           <img src={BRANDING.logoPrimaryPath} alt={BRANDING.companyName} className="brand-logo" />
           <p className="brand-hero-note">
-            Based on PrincePerelson outreach workflows and refined with your Canva reference
-            direction.
+            Built for PrincePerelson's internal recruiting and business development outreach
+            workflows.
           </p>
         </div>
       </div>
