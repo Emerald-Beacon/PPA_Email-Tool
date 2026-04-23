@@ -1,0 +1,11 @@
+<svg width="1120" height="320" viewBox="0 0 1120 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>PrincePerelson brand mark inverse</title>
+  <desc>Inverse SVG recreation of the PrincePerelson circular brand mark based on the provided screenshots.</desc>
+  <rect width="1120" height="320" fill="#26365C"/>
+  <g shape-rendering="geometricPrecision">
+    <circle cx="164" cy="160" r="130" fill="none" stroke="#FFFFFF" stroke-width="12"/>
+    <circle cx="560" cy="160" r="130" fill="#FFFFFF"/>
+    <circle cx="956" cy="160" r="130" fill="none" stroke="#FFFFFF" stroke-width="12"/>
+    <path d="M515 79H592.9C643 79 674 106.9 674 150.4C674 194.8 642.8 221.5 592.9 221.5H570.4V306H515V79ZM587.1 177C608.2 177 620.1 166.5 620.1 150.5C620.1 134 608 123.8 587.1 123.8H570.4V177H587.1Z" fill="#26365C"/>
+  </g>
+</svg>

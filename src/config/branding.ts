@@ -1,0 +1,15 @@
+export const BRANDING = {
+  companyName: 'PrincePerelson & Associates',
+  appTitle: 'PrincePerelson Recruiting Email Builder',
+  primaryColor: '#0f4c5c',
+  secondaryColor: '#d87b33',
+  slateColor: '#31424f',
+  borderColor: '#d7dee5',
+  canvasColor: '#f3f6f8',
+  cardColor: '#ffffff',
+  logoPrimaryPath: '/assets/logos/ppa-logo-primary.svg',
+  logoMarkPath: '/assets/logos/ppa-logo-mark.svg',
+  websiteUrl: 'https://www.princeperelson.com',
+  emailFontStack: "'Montserrat', Arial, Helvetica, sans-serif",
+  appFontFamily: "'Montserrat', Arial, Helvetica, sans-serif",
+} as const;

@@ -1,0 +1,19 @@
+interface PreviewPaneProps {
+  html: string;
+}
+
+export function PreviewPane({ html }: PreviewPaneProps) {
+  return (
+    <section className="panel preview-panel">
+      <div className="panel-heading">
+        <div>
+          <h2>Email Preview</h2>
+          <p>Preview the generated email before copying it into Outlook.</p>
+        </div>
+      </div>
+      <div className="preview-frame-wrap">
+        <iframe title="Email preview" className="preview-frame" srcDoc={html} />
+      </div>
+    </section>
+  );
+}
