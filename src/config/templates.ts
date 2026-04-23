@@ -4,7 +4,7 @@ const recruiter = {
   name: 'Taylor Morgan',
   title: 'Senior Recruiting Partner',
   phone: '(801) 555-0142',
-  email: 'tmorgan@princeperelson.com',
+  email: 'tmorgan@perelson.com',
 };
 
 export const TEMPLATE_DEFINITIONS: TemplateDefinition[] = [

@@ -148,7 +148,7 @@ export function EmailForm({
                 value={formData.recruiter.email}
                 onChange={(event) => onRecruiterChange('email', event.target.value)}
                 type="email"
-                placeholder="tmorgan@princeperelson.com"
+                placeholder="tmorgan@perelson.com"
               />
             </Field>
           </div>
