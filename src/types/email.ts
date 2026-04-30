@@ -2,7 +2,8 @@ export type EmailTemplateId =
   | 'job-opportunity'
   | 'candidate-introduction'
   | 'event-invitation'
-  | 'general-outreach';
+  | 'general-outreach'
+  | 'market-insights';
 
 export interface RecruiterDetails {
   name: string;
@@ -24,6 +25,7 @@ export interface EmailFormData {
   headline: string;
   subheadline: string;
   bodyCopy: string;
+  searchBriefs?: string;
   ctaText: string;
   ctaUrl: string;
   recruiter: RecruiterDetails;

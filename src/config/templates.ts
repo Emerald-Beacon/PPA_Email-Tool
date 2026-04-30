@@ -36,6 +36,13 @@ export const TEMPLATE_DEFINITIONS: TemplateDefinition[] = [
     accentColor: '#55667e',
     eyebrow: 'PrincePerelson Update',
   },
+  {
+    id: 'market-insights',
+    label: 'Market Insights',
+    description: 'Pair recent search wins with a thought leadership article to stay top-of-mind with clients and candidates.',
+    accentColor: '#8b3a22',
+    eyebrow: 'PrincePerelson Insights',
+  },
 ];
 
 export const TEMPLATE_MAP = Object.fromEntries(
@@ -46,12 +53,11 @@ export const DEFAULT_EMAILS: Record<EmailTemplateId, EmailFormData> = {
   'job-opportunity': {
     templateId: 'job-opportunity',
     subjectLine: 'A career opportunity I thought you should see',
-    preheader:
-      'A PrincePerelson recruiter is sharing a role that aligns with your experience.',
+    preheader: 'A PrincePerelson recruiter is sharing a role that aligns with your experience.',
     headline: 'An opportunity worth a conversation',
     subheadline: 'We are partnering on a role that could be a strong next move for the right person.',
     bodyCopy:
-      "Hi there,\n\nI wanted to reach out because I’m working on a search for a client that is looking for someone with your background. The role offers strong visibility, a collaborative team, and meaningful room to grow.\n\nIf you'd be open to a brief conversation, I’d be happy to share more details and learn what you’re considering next.",
+      "Hi there,\n\nI wanted to reach out because I'm working on a search for a client that is looking for someone with your background. The role offers strong visibility, a collaborative team, and meaningful room to grow.\n\nIf you'd be open to a brief conversation, I'd be happy to share more details and learn what you're considering next.",
     ctaText: 'Schedule a quick call',
     ctaUrl: 'https://perelson.com',
     recruiter,
@@ -78,12 +84,12 @@ export const DEFAULT_EMAILS: Record<EmailTemplateId, EmailFormData> = {
   },
   'event-invitation': {
     templateId: 'event-invitation',
-    subjectLine: 'You’re invited: PrincePerelson networking event',
+    subjectLine: "You're invited: PrincePerelson networking event",
     preheader: 'Join us for a PrincePerelson event designed to connect talent and hiring leaders.',
     headline: 'Join us for an upcoming PrincePerelson event',
     subheadline: 'A practical, relationship-focused event for professionals and employers in our network.',
     bodyCopy:
-      "Hello,\n\nWe’d love to have you join us for an upcoming PrincePerelson event. It’s a great opportunity to connect with peers, exchange market insights, and strengthen relationships across our professional community.\n\nWe hope you can join us and would be glad to answer any questions before the event.",
+      "Hello,\n\nWe'd love to have you join us for an upcoming PrincePerelson event. It's a great opportunity to connect with peers, exchange market insights, and strengthen relationships across our professional community.\n\nWe hope you can join us and would be glad to answer any questions before the event.",
     ctaText: 'Reserve your spot',
     ctaUrl: 'https://perelson.com',
     recruiter,
@@ -99,12 +105,31 @@ export const DEFAULT_EMAILS: Record<EmailTemplateId, EmailFormData> = {
     headline: 'A quick note from PrincePerelson',
     subheadline: 'Sharing an update, a market perspective, and an open invitation to connect.',
     bodyCopy:
-      "Hello,\n\nI wanted to reach out with a quick update and to stay in touch. We continue to see movement across the market, and I’d be glad to be a resource if you’re hiring, exploring your next move, or simply want a fresh perspective.\n\nIf a conversation would be helpful, I’m always happy to connect.",
+      "Hello,\n\nI wanted to reach out with a quick update and to stay in touch. We continue to see movement across the market, and I'd be glad to be a resource if you're hiring, exploring your next move, or simply want a fresh perspective.\n\nIf a conversation would be helpful, I'm always happy to connect.",
     ctaText: 'Connect with me',
     ctaUrl: 'https://perelson.com',
     recruiter,
     footerText:
-      'PrincePerelson & Associates helps employers and professionals move forward with confidence through thoughtful recruiting partnerships.',
+      "PrincePerelson & Associates helps employers and professionals move forward with confidence through thoughtful recruiting partnerships.",
+    heroImage: null,
+    headshotImage: null,
+  },
+  'market-insights': {
+    templateId: 'market-insights',
+    subjectLine: 'Market insights from PrincePerelson',
+    preheader: 'Recent search wins and a perspective on what we are seeing in the talent market.',
+    headline: 'What We Are Seeing in the Market Right Now',
+    subheadline:
+      'A brief from the PrincePerelson team on executive talent trends and recent search activity.',
+    bodyCopy:
+      "The talent market continues to shift. Demand for senior leadership is building while the pool of candidates willing and able to move has grown more selective.\n\nIn our searches, we are finding that the firms who move quickly, tell a compelling story about the mandate, and offer clear upside are the ones closing top candidates. Those who approach it like a posting and wait rarely get the best person available.\n\nIf you have a search underway or are thinking about a hire, we are happy to share what we are seeing in your space.",
+    searchBriefs:
+      "CFO | Investor-Backed Technology Firm\nA regional technology firm engaged us to recruit a CFO ahead of a growth equity raise. The mandate required a leader with prior experience navigating investor relationships and building scalable finance infrastructure. We delivered a candidate who had done exactly that at two previous portfolio companies.\n\nVP of Operations | Healthcare Services Platform\nA rapidly scaling healthcare services platform needed a VP of Operations to bring structure to a high-growth environment. The role required someone who could operate at both a strategic and hands-on level. We identified and placed a candidate within eight weeks.",
+    ctaText: "Let's connect",
+    ctaUrl: 'https://perelson.com',
+    recruiter,
+    footerText:
+      'PrincePerelson & Associates is a Utah-based recruiting and staffing firm connecting exceptional talent with leading organizations.',
     heroImage: null,
     headshotImage: null,
   },

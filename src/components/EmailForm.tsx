@@ -69,22 +69,40 @@ export function EmailForm({
               placeholder="A short preview of the email content"
             />
           </Field>
-          <Field label="Headline" error={errors.headline}>
+          <Field
+            label={formData.templateId === 'market-insights' ? 'Article headline' : 'Headline'}
+            error={errors.headline}
+          >
             <TextInput
               value={formData.headline}
               onChange={(event) => onFieldChange('headline', event.target.value)}
-              placeholder="An opportunity worth a conversation"
-            />
-          </Field>
-          <Field label="Subheadline">
-            <TextInput
-              value={formData.subheadline}
-              onChange={(event) => onFieldChange('subheadline', event.target.value)}
-              placeholder="Supporting line beneath the headline"
+              placeholder={
+                formData.templateId === 'market-insights'
+                  ? 'What We Are Seeing in the Market Right Now'
+                  : 'An opportunity worth a conversation'
+              }
             />
           </Field>
           <Field
-            label="Body copy"
+            label={formData.templateId === 'market-insights' ? 'Intro text' : 'Subheadline'}
+            description={
+              formData.templateId === 'market-insights'
+                ? 'Short descriptor shown beneath the PrincePerelson Insights eyebrow at the top of the email.'
+                : undefined
+            }
+          >
+            <TextInput
+              value={formData.subheadline}
+              onChange={(event) => onFieldChange('subheadline', event.target.value)}
+              placeholder={
+                formData.templateId === 'market-insights'
+                  ? 'A brief from the PrincePerelson team on executive talent trends'
+                  : 'Supporting line beneath the headline'
+              }
+            />
+          </Field>
+          <Field
+            label={formData.templateId === 'market-insights' ? 'Article body' : 'Body copy'}
             description="Use blank lines between paragraphs. Line breaks inside a paragraph are preserved."
             error={errors.bodyCopy}
           >
@@ -96,6 +114,23 @@ export function EmailForm({
           </Field>
         </div>
       </FormSection>
+
+      {formData.templateId === 'market-insights' && (
+        <FormSection
+          title="Search Briefs"
+          description="Each brief appears as a bold title and a short paragraph. Separate briefs with a blank line. Format each as: Role Title | Company Type on the first line, then the description on the next line."
+        >
+          <div className="field-grid">
+            <Field label="Recent search case studies">
+              <Textarea
+                value={formData.searchBriefs ?? ''}
+                onChange={(event) => onFieldChange('searchBriefs', event.target.value)}
+                rows={10}
+              />
+            </Field>
+          </div>
+        </FormSection>
+      )}
 
       <FormSection title="Call To Action" description="Give recipients a clear next step.">
         <div className="split-grid">
