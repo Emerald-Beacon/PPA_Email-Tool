@@ -229,7 +229,8 @@ img {
 
 .text-input,
 .text-area,
-.file-input {
+.file-input,
+.select-input {
   width: 100%;
   border: 1px solid #d6cdbc;
   border-radius: 16px;
@@ -241,7 +242,8 @@ img {
 
 .text-input:focus,
 .text-area:focus,
-.file-input:focus {
+.file-input:focus,
+.select-input:focus {
   outline: none;
   border-color: #1b2d4b;
   background: #ffffff;

@@ -8,12 +8,40 @@ interface RenderEmailOptions {
   logoSrc?: string;
 }
 
+interface EmailTheme {
+  outerBg: string;
+  cardBg: string;
+  cardBorder: string;
+  divider: string;
+  headshotBorder: string;
+}
+
+function getEmailTheme(backgroundStyle?: string): EmailTheme {
+  if (backgroundStyle === 'white') {
+    return {
+      outerBg: '#f0f0f0',
+      cardBg: '#ffffff',
+      cardBorder: '#e0e0e0',
+      divider: '#e0e0e0',
+      headshotBorder: '#e0e0e0',
+    };
+  }
+  return {
+    outerBg: '#ede9e0',
+    cardBg: '#fbf8f1',
+    cardBorder: '#d8cfbe',
+    divider: '#d8cfbe',
+    headshotBorder: '#d9d1c3',
+  };
+}
+
 export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOptions = {}): string {
   if (formData.templateId === 'market-insights') {
     return renderMarketInsightsHtml(formData, options);
   }
 
   const template = TEMPLATE_MAP[formData.templateId];
+  const theme = getEmailTheme(formData.backgroundStyle);
   const logoSrc = options.logoSrc || BRANDING.logoPrimaryPath;
   const bodyParagraphs = formData.bodyCopy
     .split(/\n{2,}/)
@@ -44,7 +72,7 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
           src="${escapeAttribute(formData.headshotImage.dataUrl)}"
           alt="${escapeAttribute(formData.headshotImage.alt || formData.recruiter.name)}"
           width="84"
-          style="display:block; width:84px; height:84px; border-radius:42px; object-fit:cover; border:2px solid #d9d1c3;"
+          style="display:block; width:84px; height:84px; border-radius:42px; object-fit:cover; border:2px solid ${theme.headshotBorder};"
         />
       </td>
     `
@@ -62,11 +90,11 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>${escapeHtml(formData.subjectLine)}</title>
   </head>
-  <body style="margin:0; padding:0; background-color:#ede9e0;">
+  <body style="margin:0; padding:0; background-color:${theme.outerBg};">
     <div style="display:none; max-height:0; overflow:hidden; opacity:0; mso-hide:all;">
       ${escapeHtml(formData.preheader)}
     </div>
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%; margin:0; padding:0; background-color:#ede9e0;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%; margin:0; padding:0; background-color:${theme.outerBg};">
       <tr>
         <td align="center" style="padding:28px 12px 40px;">
           <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="${EMAIL_MAX_WIDTH}" style="width:100%; max-width:${EMAIL_MAX_WIDTH}px;">
@@ -87,7 +115,7 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
               </td>
             </tr>
             <tr>
-              <td style="background-color:#fbf8f1; border:1px solid #d8cfbe; border-radius:28px;">
+              <td style="background-color:${theme.cardBg}; border:1px solid ${theme.cardBorder}; border-radius:28px;">
                 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                   <tr>
                     <td style="padding:30px 36px 18px 36px;">
@@ -122,7 +150,7 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
                     <td style="padding:0 36px;">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
-                          <td style="border-top:1px solid #d8cfbe; font-size:0; line-height:0;">&nbsp;</td>
+                          <td style="border-top:1px solid ${theme.divider}; font-size:0; line-height:0;">&nbsp;</td>
                         </tr>
                       </table>
                     </td>
@@ -168,7 +196,7 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
                     <td style="padding:10px 36px 0;">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
-                          <td style="border-top:1px solid #d8cfbe; font-size:0; line-height:0;">&nbsp;</td>
+                          <td style="border-top:1px solid ${theme.divider}; font-size:0; line-height:0;">&nbsp;</td>
                         </tr>
                       </table>
                     </td>
@@ -220,6 +248,7 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
 
 function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailOptions = {}): string {
   const template = TEMPLATE_MAP[formData.templateId];
+  const theme = getEmailTheme(formData.backgroundStyle);
   const logoSrc = options.logoSrc || BRANDING.logoPrimaryPath;
   const accent = template.accentColor;
 
@@ -246,7 +275,7 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
           src="${escapeAttribute(formData.headshotImage.dataUrl)}"
           alt="${escapeAttribute(formData.headshotImage.alt || formData.recruiter.name)}"
           width="84"
-          style="display:block; width:84px; height:84px; border-radius:42px; object-fit:cover; border:2px solid #d9d1c3;"
+          style="display:block; width:84px; height:84px; border-radius:42px; object-fit:cover; border:2px solid ${theme.headshotBorder};"
         />
       </td>
     `
@@ -307,11 +336,11 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>${escapeHtml(formData.subjectLine)}</title>
   </head>
-  <body style="margin:0; padding:0; background-color:#ede9e0;">
+  <body style="margin:0; padding:0; background-color:${theme.outerBg};">
     <div style="display:none; max-height:0; overflow:hidden; opacity:0; mso-hide:all;">
       ${escapeHtml(formData.preheader)}
     </div>
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%; margin:0; padding:0; background-color:#ede9e0;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%; margin:0; padding:0; background-color:${theme.outerBg};">
       <tr>
         <td align="center" style="padding:28px 12px 40px;">
           <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="${EMAIL_MAX_WIDTH}" style="width:100%; max-width:${EMAIL_MAX_WIDTH}px;">
@@ -336,7 +365,7 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
 
             <!-- Card -->
             <tr>
-              <td style="background-color:#fbf8f1; border:1px solid #d8cfbe; border-radius:28px;">
+              <td style="background-color:${theme.cardBg}; border:1px solid ${theme.cardBorder}; border-radius:28px;">
                 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
 
                   <!-- Card header: eyebrow + intro -->
@@ -364,7 +393,7 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
                   <tr>
                     <td style="padding:0 36px;">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-                        <tr><td style="border-top:1px solid #d8cfbe; font-size:0; line-height:0;">&nbsp;</td></tr>
+                        <tr><td style="border-top:1px solid ${theme.divider}; font-size:0; line-height:0;">&nbsp;</td></tr>
                       </table>
                     </td>
                   </tr>
@@ -403,7 +432,7 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
                   <tr>
                     <td style="padding:0 36px;">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-                        <tr><td style="border-top:1px solid #d8cfbe; font-size:0; line-height:0;">&nbsp;</td></tr>
+                        <tr><td style="border-top:1px solid ${theme.divider}; font-size:0; line-height:0;">&nbsp;</td></tr>
                       </table>
                     </td>
                   </tr>
@@ -467,7 +496,7 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
                   <tr>
                     <td style="padding:10px 36px 0;">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-                        <tr><td style="border-top:1px solid #d8cfbe; font-size:0; line-height:0;">&nbsp;</td></tr>
+                        <tr><td style="border-top:1px solid ${theme.divider}; font-size:0; line-height:0;">&nbsp;</td></tr>
                       </table>
                     </td>
                   </tr>

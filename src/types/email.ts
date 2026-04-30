@@ -18,8 +18,11 @@ export interface UploadedImage {
   filename: string;
 }
 
+export type EmailBackgroundStyle = 'beige' | 'white';
+
 export interface EmailFormData {
   templateId: EmailTemplateId;
+  backgroundStyle: EmailBackgroundStyle;
   subjectLine: string;
   preheader: string;
   headline: string;

@@ -1,5 +1,10 @@
 import type { ChangeEventHandler, ReactNode } from 'react';
 
+export interface SelectOption {
+  value: string;
+  label: string;
+}
+
 interface FieldProps {
   label: string;
   description?: string;
@@ -47,5 +52,23 @@ export function Textarea({ value, onChange, placeholder, rows = 5 }: TextareaPro
       placeholder={placeholder}
       rows={rows}
     />
+  );
+}
+
+interface SelectProps {
+  value: string;
+  onChange: ChangeEventHandler<HTMLSelectElement>;
+  options: SelectOption[];
+}
+
+export function Select({ value, onChange, options }: SelectProps) {
+  return (
+    <select className="select-input" value={value} onChange={onChange}>
+      {options.map((opt) => (
+        <option key={opt.value} value={opt.value}>
+          {opt.label}
+        </option>
+      ))}
+    </select>
   );
 }

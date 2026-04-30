@@ -1,8 +1,13 @@
 import type { ChangeEvent } from 'react';
 import { TEMPLATE_DEFINITIONS } from '../config/templates';
 import type { EmailFormData, ValidationErrors } from '../types/email';
-import { Field, Textarea, TextInput } from './Field';
+import { Field, Select, Textarea, TextInput } from './Field';
 import { FormSection } from './FormSection';
+
+const BACKGROUND_OPTIONS = [
+  { value: 'beige', label: 'Warm beige (default)' },
+  { value: 'white', label: 'Clean white' },
+];
 
 interface EmailFormProps {
   formData: EmailFormData;
@@ -47,6 +52,17 @@ export function EmailForm({
             Selected template: <strong>{currentTemplate.label}</strong>
           </p>
         ) : null}
+        <div style={{ padding: '0 24px 24px' }}>
+          <Field label="Email background">
+            <Select
+              value={formData.backgroundStyle}
+              onChange={(event) =>
+                onFieldChange('backgroundStyle', event.target.value as EmailFormData['backgroundStyle'])
+              }
+              options={BACKGROUND_OPTIONS}
+            />
+          </Field>
+        </div>
       </FormSection>
 
       <FormSection title="Email Content" description="These fields control the message and its Outlook preview.">
