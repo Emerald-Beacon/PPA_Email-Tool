@@ -53,6 +53,7 @@ export const DEFAULT_EMAILS: Record<EmailTemplateId, EmailFormData> = {
   'job-opportunity': {
     templateId: 'job-opportunity',
     backgroundStyle: 'beige',
+    fontFamily: 'montserrat',
     subjectLine: 'A career opportunity I thought you should see',
     preheader: 'A PrincePerelson recruiter is sharing a role that aligns with your experience.',
     headline: 'An opportunity worth a conversation',
@@ -70,6 +71,7 @@ export const DEFAULT_EMAILS: Record<EmailTemplateId, EmailFormData> = {
   'candidate-introduction': {
     templateId: 'candidate-introduction',
     backgroundStyle: 'beige',
+    fontFamily: 'montserrat',
     subjectLine: 'Candidate introduction from PrincePerelson',
     preheader: 'Sharing a candidate profile that may align with your hiring priorities.',
     headline: 'A candidate you should consider',
@@ -87,6 +89,7 @@ export const DEFAULT_EMAILS: Record<EmailTemplateId, EmailFormData> = {
   'event-invitation': {
     templateId: 'event-invitation',
     backgroundStyle: 'beige',
+    fontFamily: 'montserrat',
     subjectLine: "You're invited: PrincePerelson networking event",
     preheader: 'Join us for a PrincePerelson event designed to connect talent and hiring leaders.',
     headline: 'Join us for an upcoming PrincePerelson event',
@@ -104,6 +107,7 @@ export const DEFAULT_EMAILS: Record<EmailTemplateId, EmailFormData> = {
   'general-outreach': {
     templateId: 'general-outreach',
     backgroundStyle: 'beige',
+    fontFamily: 'montserrat',
     subjectLine: 'Checking in from PrincePerelson',
     preheader: 'A quick update and invitation to connect from your PrincePerelson team.',
     headline: 'A quick note from PrincePerelson',
@@ -121,6 +125,7 @@ export const DEFAULT_EMAILS: Record<EmailTemplateId, EmailFormData> = {
   'market-insights': {
     templateId: 'market-insights',
     backgroundStyle: 'beige',
+    fontFamily: 'montserrat',
     subjectLine: 'Market insights from PrincePerelson',
     preheader: 'Recent search wins and a perspective on what we are seeing in the talent market.',
     headline: 'What We Are Seeing in the Market Right Now',

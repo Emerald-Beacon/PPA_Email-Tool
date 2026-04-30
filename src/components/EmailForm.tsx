@@ -9,6 +9,11 @@ const BACKGROUND_OPTIONS = [
   { value: 'white', label: 'Clean white' },
 ];
 
+const FONT_OPTIONS = [
+  { value: 'montserrat', label: 'Montserrat (default)' },
+  { value: 'century-gothic', label: 'Century Gothic' },
+];
+
 interface EmailFormProps {
   formData: EmailFormData;
   errors: ValidationErrors;
@@ -52,7 +57,7 @@ export function EmailForm({
             Selected template: <strong>{currentTemplate.label}</strong>
           </p>
         ) : null}
-        <div style={{ padding: '0 24px 24px' }}>
+        <div style={{ padding: '0 24px 24px', display: 'grid', gap: '18px' }}>
           <Field label="Email background">
             <Select
               value={formData.backgroundStyle}
@@ -60,6 +65,15 @@ export function EmailForm({
                 onFieldChange('backgroundStyle', event.target.value as EmailFormData['backgroundStyle'])
               }
               options={BACKGROUND_OPTIONS}
+            />
+          </Field>
+          <Field label="Email font">
+            <Select
+              value={formData.fontFamily}
+              onChange={(event) =>
+                onFieldChange('fontFamily', event.target.value as EmailFormData['fontFamily'])
+              }
+              options={FONT_OPTIONS}
             />
           </Field>
         </div>

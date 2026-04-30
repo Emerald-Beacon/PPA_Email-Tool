@@ -16,6 +16,13 @@ interface EmailTheme {
   headshotBorder: string;
 }
 
+function getEmailFontStack(fontFamily?: string): string {
+  if (fontFamily === 'century-gothic') {
+    return "'Century Gothic', CenturyGothic, 'Trebuchet MS', Arial, sans-serif";
+  }
+  return "'Montserrat', Arial, Helvetica, sans-serif";
+}
+
 function getEmailTheme(backgroundStyle?: string): EmailTheme {
   if (backgroundStyle === 'white') {
     return {
@@ -42,6 +49,7 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
 
   const template = TEMPLATE_MAP[formData.templateId];
   const theme = getEmailTheme(formData.backgroundStyle);
+  const fontStack = getEmailFontStack(formData.fontFamily);
   const logoSrc = options.logoSrc || BRANDING.logoPrimaryPath;
   const bodyParagraphs = formData.bodyCopy
     .split(/\n{2,}/)
@@ -121,7 +129,7 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
                     <td style="padding:30px 36px 18px 36px;">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
-                          <td align="center" style="font-family:${BRANDING.emailFontStack}; font-size:12px; line-height:18px; letter-spacing:2.4px; text-transform:uppercase; color:${template.accentColor}; font-weight:700;">
+                          <td align="center" style="font-family:${fontStack}; font-size:12px; line-height:18px; letter-spacing:2.4px; text-transform:uppercase; color:${template.accentColor}; font-weight:700;">
                             ${escapeHtml(template.eyebrow)}
                           </td>
                         </tr>
@@ -136,7 +144,7 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
                             ? `
                         <tr><td style="height:16px; line-height:16px; font-size:0;">&nbsp;</td></tr>
                         <tr>
-                          <td align="center" style="font-family:${BRANDING.emailFontStack}; font-size:17px; line-height:29px; color:#655f58; font-weight:500;">
+                          <td align="center" style="font-family:${fontStack}; font-size:17px; line-height:29px; color:#655f58; font-weight:500;">
                             ${escapeHtml(formData.subheadline)}
                           </td>
                         </tr>
@@ -164,7 +172,7 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
                           .map(
                             (paragraph) => `
                           <tr>
-                            <td style="font-family:${BRANDING.emailFontStack}; font-size:16px; line-height:29px; color:#2f3b4d; padding-bottom:18px;">
+                            <td style="font-family:${fontStack}; font-size:16px; line-height:29px; color:#2f3b4d; padding-bottom:18px;">
                               ${paragraph}
                             </td>
                           </tr>
@@ -178,7 +186,7 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
                                 <td align="center" bgcolor="${template.accentColor}" style="border-radius:999px;">
                                   <a
                                     href="${escapeAttribute(formData.ctaUrl)}"
-                                    style="display:inline-block; font-family:${BRANDING.emailFontStack}; font-size:14px; line-height:14px; color:#fbf8f1; text-decoration:none; padding:16px 24px; font-weight:700; letter-spacing:0.04em;"
+                                    style="display:inline-block; font-family:${fontStack}; font-size:14px; line-height:14px; color:#fbf8f1; text-decoration:none; padding:16px 24px; font-weight:700; letter-spacing:0.04em;"
                                     target="_blank"
                                     rel="noreferrer"
                                   >
@@ -206,7 +214,7 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                         <tr>
                           ${headshotBlock}
-                          <td width="${signatureTextWidth}" valign="top" style="font-family:${BRANDING.emailFontStack}; color:#2f3b4d;">
+                          <td width="${signatureTextWidth}" valign="top" style="font-family:${fontStack}; color:#2f3b4d;">
                             <div style="font-size:19px; line-height:24px; font-weight:700; color:#1b2d4b; padding-bottom:4px;">
                               ${escapeHtml(formData.recruiter.name)}
                             </div>
@@ -227,7 +235,7 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
                     <td style="background-color:#1b2d4b; border-radius:0 0 28px 28px; padding:18px 28px 20px 28px;">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
-                          <td align="center" style="font-family:${BRANDING.emailFontStack}; font-size:12px; line-height:20px; color:#f3ecdf;">
+                          <td align="center" style="font-family:${fontStack}; font-size:12px; line-height:20px; color:#f3ecdf;">
                             ${escapeHtml(formData.footerText || BRANDING.companyName)}
                           </td>
                         </tr>
@@ -249,6 +257,7 @@ export function renderEmailHtml(formData: EmailFormData, options: RenderEmailOpt
 function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailOptions = {}): string {
   const template = TEMPLATE_MAP[formData.templateId];
   const theme = getEmailTheme(formData.backgroundStyle);
+  const fontStack = getEmailFontStack(formData.fontFamily);
   const logoSrc = options.logoSrc || BRANDING.logoPrimaryPath;
   const accent = template.accentColor;
 
@@ -308,10 +317,10 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
                 (brief, i) => `
               <tr>
                 <td style="padding-bottom:${i < briefs.length - 1 ? '24px' : '8px'};">
-                  <div style="font-family:${BRANDING.emailFontStack}; font-size:15px; line-height:22px; font-weight:700; color:#1b2d4b; padding-bottom:6px;">
+                  <div style="font-family:${fontStack}; font-size:15px; line-height:22px; font-weight:700; color:#1b2d4b; padding-bottom:6px;">
                     ${escapeHtml(brief.title)}
                   </div>
-                  <div style="font-family:${BRANDING.emailFontStack}; font-size:15px; line-height:27px; color:#2f3b4d;">
+                  <div style="font-family:${fontStack}; font-size:15px; line-height:27px; color:#2f3b4d;">
                     ${escapeHtml(brief.description)}
                   </div>
                 </td>
@@ -373,14 +382,14 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
                     <td style="padding:30px 36px 22px 36px;">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
-                          <td align="center" style="font-family:${BRANDING.emailFontStack}; font-size:12px; line-height:18px; letter-spacing:2.4px; text-transform:uppercase; color:${accent}; font-weight:700;">
+                          <td align="center" style="font-family:${fontStack}; font-size:12px; line-height:18px; letter-spacing:2.4px; text-transform:uppercase; color:${accent}; font-weight:700;">
                             ${escapeHtml(template.eyebrow)}
                           </td>
                         </tr>
                         ${formData.subheadline.trim() ? `
                         <tr><td style="height:16px; line-height:16px; font-size:0;">&nbsp;</td></tr>
                         <tr>
-                          <td align="center" style="font-family:${BRANDING.emailFontStack}; font-size:16px; line-height:27px; color:#655f58;">
+                          <td align="center" style="font-family:${fontStack}; font-size:16px; line-height:27px; color:#655f58;">
                             ${escapeHtml(formData.subheadline)}
                           </td>
                         </tr>
@@ -403,7 +412,7 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
                   ${briefs.length > 0 ? `
                   <tr>
                     <td style="padding:0 36px 16px 36px;">
-                      <div style="font-family:${BRANDING.emailFontStack}; font-size:11px; line-height:16px; letter-spacing:2px; text-transform:uppercase; color:${accent}; font-weight:700;">
+                      <div style="font-family:${fontStack}; font-size:11px; line-height:16px; letter-spacing:2px; text-transform:uppercase; color:${accent}; font-weight:700;">
                         Recent Searches We've Completed
                       </div>
                     </td>
@@ -416,7 +425,7 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
                           <td align="center" bgcolor="${accent}" style="border-radius:999px;">
                             <a
                               href="${escapeAttribute(formData.ctaUrl)}"
-                              style="display:inline-block; font-family:${BRANDING.emailFontStack}; font-size:14px; line-height:14px; color:#fbf8f1; text-decoration:none; padding:16px 24px; font-weight:700; letter-spacing:0.04em;"
+                              style="display:inline-block; font-family:${fontStack}; font-size:14px; line-height:14px; color:#fbf8f1; text-decoration:none; padding:16px 24px; font-weight:700; letter-spacing:0.04em;"
                               target="_blank"
                               rel="noreferrer"
                             >
@@ -443,7 +452,7 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
                   ${articleParagraphs.length > 0 ? `
                   <tr>
                     <td style="padding:0 36px 10px 36px;">
-                      <div style="font-family:${BRANDING.emailFontStack}; font-size:11px; line-height:16px; letter-spacing:2px; text-transform:uppercase; color:${accent}; font-weight:700; padding-bottom:14px;">
+                      <div style="font-family:${fontStack}; font-size:11px; line-height:16px; letter-spacing:2px; text-transform:uppercase; color:${accent}; font-weight:700; padding-bottom:14px;">
                         Market Insights
                       </div>
                       <div style="font-family:Georgia, 'Times New Roman', serif; font-size:30px; line-height:38px; color:#1b2d4b; font-weight:400;">
@@ -460,7 +469,7 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
                           .map(
                             (p) => `
                           <tr>
-                            <td style="font-family:${BRANDING.emailFontStack}; font-size:16px; line-height:29px; color:#2f3b4d; padding-bottom:18px;">
+                            <td style="font-family:${fontStack}; font-size:16px; line-height:29px; color:#2f3b4d; padding-bottom:18px;">
                               ${p}
                             </td>
                           </tr>
@@ -475,7 +484,7 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
                                 <td align="center" bgcolor="${accent}" style="border-radius:999px;">
                                   <a
                                     href="${escapeAttribute(formData.ctaUrl)}"
-                                    style="display:inline-block; font-family:${BRANDING.emailFontStack}; font-size:14px; line-height:14px; color:#fbf8f1; text-decoration:none; padding:16px 24px; font-weight:700; letter-spacing:0.04em;"
+                                    style="display:inline-block; font-family:${fontStack}; font-size:14px; line-height:14px; color:#fbf8f1; text-decoration:none; padding:16px 24px; font-weight:700; letter-spacing:0.04em;"
                                     target="_blank"
                                     rel="noreferrer"
                                   >
@@ -507,7 +516,7 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                         <tr>
                           ${headshotBlock}
-                          <td width="${signatureTextWidth}" valign="top" style="font-family:${BRANDING.emailFontStack}; color:#2f3b4d;">
+                          <td width="${signatureTextWidth}" valign="top" style="font-family:${fontStack}; color:#2f3b4d;">
                             <div style="font-size:19px; line-height:24px; font-weight:700; color:#1b2d4b; padding-bottom:4px;">
                               ${escapeHtml(formData.recruiter.name)}
                             </div>
@@ -530,7 +539,7 @@ function renderMarketInsightsHtml(formData: EmailFormData, options: RenderEmailO
                     <td style="background-color:#1b2d4b; border-radius:0 0 28px 28px; padding:18px 28px 20px 28px;">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
-                          <td align="center" style="font-family:${BRANDING.emailFontStack}; font-size:12px; line-height:20px; color:#f3ecdf;">
+                          <td align="center" style="font-family:${fontStack}; font-size:12px; line-height:20px; color:#f3ecdf;">
                             ${escapeHtml(formData.footerText || BRANDING.companyName)}
                           </td>
                         </tr>

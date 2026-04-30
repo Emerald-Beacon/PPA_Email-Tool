@@ -19,10 +19,12 @@ export interface UploadedImage {
 }
 
 export type EmailBackgroundStyle = 'beige' | 'white';
+export type EmailFontFamily = 'montserrat' | 'century-gothic';
 
 export interface EmailFormData {
   templateId: EmailTemplateId;
   backgroundStyle: EmailBackgroundStyle;
+  fontFamily: EmailFontFamily;
   subjectLine: string;
   preheader: string;
   headline: string;
